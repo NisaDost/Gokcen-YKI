@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="YKI.UI.Components.Taskbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewmodel="clr-namespace:YKI.UI.ViewModel;assembly=YKI.UI"
+             xmlns:local="clr-namespace:YKI.UI.Components"
+             mc:Ignorable="d" Height="50" Background="{StaticResource BackgroundDarkBrush}">
+
+    <!--<UserControl.DataContext>
+        <viewmodel:TaskbarViewModel />
+    </UserControl.DataContext>-->
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Tabs -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
+            <Button Content="Görev" Command="{Binding MissionTabCommand}" Style="{StaticResource TabButtonStyle}" />
+            <Button Content="Telemetri" Command="{Binding TelemetryTabCommand}" Style="{StaticResource TabButtonStyle}" />
+            <Button Content="Video" Command="{Binding VideoTabCommand}" Style="{StaticResource TabButtonStyle}" />
+            <Button Content="Ayarlar" Command="{Binding SettingsTabCommand}" Style="{StaticResource TabButtonStyle}" />
+        </StackPanel>
+
+        <!-- Clock -->
+        <TextBlock Grid.Column="1" 
+               Text="{Binding CurrentTime}" 
+               Foreground="{StaticResource SecondaryBrush}" 
+               FontSize="16" 
+               FontFamily="{StaticResource Inter}"
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Center"/>
+
+        <!-- Connection Status -->
+        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10">
+            <Ellipse Width="12" Height="12" Fill="{Binding ConnectionStatusBrush}" Margin="0,0,5,0"/>
+            <TextBlock Text="{Binding ConnectionStatusText}" 
+                   Foreground="{StaticResource SecondaryBrush}" 
+                   FontSize="14"
+                   FontFamily="{StaticResource Inter}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
