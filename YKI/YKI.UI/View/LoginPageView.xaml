@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YKI.UI.View"
-             xmlns:inputForm="clr-namespace:YKI.UI.Components.LoginPage"
+             
+             xmlns:lp="clr-namespace:YKI.UI.Components.LoginPage"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="SteelBlue">
@@ -23,13 +24,13 @@
             </Grid>
 
             <Border Grid.Column="0">
-                <Image Source="/resources/Images/1.png"    
+                <Image Source="/Resources/Images/1.png"    
                        Width="250"
                        Height="auto"/>
             </Border>
 
             <Border Grid.Column="1">
-                <inputForm:LoginForm Loaded="InputBoxes_Loaded"/>
+                <lp:LoginForm/>
             </Border>
 
         </Grid>
