@@ -8,7 +8,7 @@
              xmlns:lp="clr-namespace:YKI.UI.Components.LoginPage"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="SteelBlue">
+    <Grid Background= "{StaticResource BackgroundDarkBrush}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

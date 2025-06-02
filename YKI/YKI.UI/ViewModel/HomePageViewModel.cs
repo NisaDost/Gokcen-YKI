@@ -6,19 +6,19 @@ using YKI.Service.ROS;
 using YKI.UI.Command;
 using System.Globalization;
 
-
 namespace YKI.UI.ViewModel
 {
-    public class HomePageViewModel: ViewModelBase
+    public class HomePageViewModel : ViewModelBase
     {
-
         private string _latitude = "39.9255";  // Default center latitude (Ankara, Türkiye) - stored as string for textbox usage
         private string _longitude = "32.8663"; // Default center longitude (Ankara, Türkiye) - stored as string for textbox usage
-        private string _mapUrl; // = Path.Combine(Path.Combine(AppDomain.CurrentDomain.BaseDirectory).Split("bin")[0], "Resources", "MapPage.html");
-        private readonly TaskbarViewModel taskbarViewModel = new TaskbarViewModel();
-        private readonly SidebarViewModel sidebarViewModel = new SidebarViewModel();
-        public ICommand UpdateMapCommand { get; }
+        private string _mapUrl;
 
+        // Shared ViewModels that will be used by the UI components
+        public TaskbarViewModel TaskbarViewModel { get; private set; }
+        public SidebarViewModel SidebarViewModel { get; private set; }
+
+        public ICommand UpdateMapCommand { get; }
         public ICommand LogDenemeCommand { get; }
 
         public HomePageViewModel()
@@ -27,22 +27,27 @@ namespace YKI.UI.ViewModel
             _mapUrl = Path.Combine(relativePath, "Resources", "MapPage.html");
 
             UpdateMapCommand = new RelayCommand(UpdateMap);
-
-
-            LoggingService.Init();
-            RosNodeService rosNodeService = new RosNodeService();
-            rosNodeService.Init();
             LogDenemeCommand = new RelayCommand(LogDeneme);
 
-            taskbarViewModel.PropertyChanged += (s, e) =>
+            // Initialize shared ViewModels
+            TaskbarViewModel = new TaskbarViewModel();
+            SidebarViewModel = new SidebarViewModel();
+
+            // Set up communication between Taskbar and Sidebar
+            TaskbarViewModel.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(TaskbarViewModel.SelectedTab))
                 {
-                    sidebarViewModel.UpdateSelectedTab(taskbarViewModel.SelectedTab);
+                    SidebarViewModel.UpdateSelectedTab(TaskbarViewModel.SelectedTab);
                 }
             };
 
+            // Initialize services
+            LoggingService.Init();
+            //RosNodeService rosNodeService = new RosNodeService();
+            //rosNodeService.Init();
         }
+
         public string Latitude
         {
             get => _latitude;
@@ -52,6 +57,7 @@ namespace YKI.UI.ViewModel
                 OnPropertyChanged(nameof(Latitude));
             }
         }
+
         public string Longitude
         {
             get => _longitude;
@@ -61,6 +67,7 @@ namespace YKI.UI.ViewModel
                 OnPropertyChanged(nameof(Longitude));
             }
         }
+
         public string MapUrl
         {
             get { return _mapUrl; }
@@ -98,7 +105,6 @@ namespace YKI.UI.ViewModel
             LoggingService.Trace("Deneme Trace");
         }
 
-
         private WebView2 _webViewInstance;
         public WebView2 WebViewInstance
         {
@@ -110,6 +116,4 @@ namespace YKI.UI.ViewModel
             }
         }
     }
-
 }
-
