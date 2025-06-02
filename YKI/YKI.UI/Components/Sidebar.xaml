@@ -6,10 +6,425 @@
              xmlns:local="clr-namespace:YKI.UI.Components"
              xmlns:enums="clr-namespace:YKI.UI.Enums"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    
+             d:DesignHeight="450" d:DesignWidth="250"
+             Background="{StaticResource BackgroundLightBrush}">
 
     <Grid>
-        
+        <!-- Mission Tab Content -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                     Visibility="{Binding IsMissionTabSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+            <StackPanel Margin="10">
+                <TextBlock Text="GÖREV BİLGİLERİ" 
+                          Foreground="White" 
+                          FontWeight="Bold" 
+                          FontSize="14" 
+                          Margin="0,0,0,10"/>
+
+                <!-- Mission Status -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Görev Durumu" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="Hazır" 
+                                  Foreground="White" 
+                                  FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Mission Time -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Görev Süresi" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="00:00:00" 
+                                  Foreground="White" 
+                                  FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Waypoints -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Rota Noktaları" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="0 / 0" 
+                                  Foreground="White" 
+                                  FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Mission Controls -->
+                <TextBlock Text="GÖREV KONTROL" 
+                          Foreground="White" 
+                          FontWeight="Bold" 
+                          FontSize="14" 
+                          Margin="0,20,0,10"/>
+
+                <Button Content="Görevi Başlat" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+
+                <Button Content="Görevi Duraklat" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+
+                <Button Content="Görevi Sonlandır" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+
+                <Button Content="Ana Üsse Dön" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Telemetry Tab Content -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                     Visibility="{Binding IsTelemetryTabSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+            <StackPanel Margin="10">
+                <TextBlock Text="TELEMETRİ VERİLERİ" 
+                          Foreground="White" 
+                          FontWeight="Bold" 
+                          FontSize="14" 
+                          Margin="0,0,0,10"/>
+
+                <!-- GPS Data -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="GPS Konumu" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="Enlem: 39.9255°" 
+                                  Foreground="White"/>
+                        <TextBlock Text="Boylam: 32.8663°" 
+                                  Foreground="White"/>
+                        <TextBlock Text="Yükseklik: 850m" 
+                                  Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Battery -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Batarya Durumu" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="100%" 
+                                  Foreground="White" 
+                                  FontWeight="Bold"/>
+                        <TextBlock Text="12.6V" 
+                                  Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Speed -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Hız Bilgileri" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="Yer Hızı: 0 m/s" 
+                                  Foreground="White"/>
+                        <TextBlock Text="Hava Hızı: 0 m/s" 
+                                  Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Orientation -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Yönelim" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="Roll: 0°" 
+                                  Foreground="White"/>
+                        <TextBlock Text="Pitch: 0°" 
+                                  Foreground="White"/>
+                        <TextBlock Text="Yaw: 0°" 
+                                  Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Signal Strength -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Sinyal Gücü" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="RSSI: -45 dBm" 
+                                  Foreground="White" 
+                                  FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Video Tab Content -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                     Visibility="{Binding IsVideoTabSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+            <StackPanel Margin="10">
+                <TextBlock Text="VİDEO KONTROL" 
+                          Foreground="White" 
+                          FontWeight="Bold" 
+                          FontSize="14" 
+                          Margin="0,0,0,10"/>
+
+                <!-- Camera Status -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Kamera Durumu" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock Text="Çevrimdışı" 
+                                  Foreground="White" 
+                                  FontWeight="Bold"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Video Quality -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Video Kalitesi" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+                        <ComboBox Background="{StaticResource BackgroundLightBrush}" 
+                                 Foreground="White" 
+                                 BorderBrush="{StaticResource PrimaryBrush}">
+                            <ComboBoxItem Content="1080p"/>
+                            <ComboBoxItem Content="720p" IsSelected="True"/>
+                            <ComboBoxItem Content="480p"/>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+
+                <!-- Recording Controls -->
+                <TextBlock Text="KAYIT KONTROL" 
+                          Foreground="White" 
+                          FontWeight="Bold" 
+                          FontSize="14" 
+                          Margin="0,20,0,10"/>
+
+                <Button Content="Kaydı Başlat" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+
+                <Button Content="Kaydı Durdur" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+
+                <Button Content="Ekran Görüntüsü Al" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+
+                <!-- Camera Controls -->
+                <TextBlock Text="KAMERA KONTROL" 
+                          Foreground="White" 
+                          FontWeight="Bold" 
+                          FontSize="14" 
+                          Margin="0,20,0,10"/>
+
+                <Grid Margin="0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Row="0" Grid.Column="1" Content="↑" 
+                           Style="{StaticResource SubmitButton}" 
+                           Width="50" Height="30" 
+                           Margin="2"/>
+                    <Button Grid.Row="1" Grid.Column="0" Content="←" 
+                           Style="{StaticResource SubmitButton}" 
+                           Width="50" Height="30" 
+                           Margin="2"/>
+                    <Button Grid.Row="1" Grid.Column="1" Content="●" 
+                           Style="{StaticResource SubmitButton}" 
+                           Width="50" Height="30" 
+                           Margin="2"/>
+                    <Button Grid.Row="1" Grid.Column="2" Content="→" 
+                           Style="{StaticResource SubmitButton}" 
+                           Width="50" Height="30" 
+                           Margin="2"/>
+                    <Button Grid.Row="2" Grid.Column="1" Content="↓" 
+                           Style="{StaticResource SubmitButton}" 
+                           Width="50" Height="30" 
+                           Margin="2"/>
+                </Grid>
+
+                <!-- Zoom Controls -->
+                <StackPanel Orientation="Horizontal" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,10">
+                    <Button Content="Zoom -" 
+                           Style="{StaticResource SubmitButton}" 
+                           Width="70" 
+                           Margin="5,0"/>
+                    <Button Content="Zoom +" 
+                           Style="{StaticResource SubmitButton}" 
+                           Width="70" 
+                           Margin="5,0"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Settings Tab Content -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                     Visibility="{Binding IsSettingsTabSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+            <StackPanel Margin="10">
+                <TextBlock Text="AYARLAR" 
+                          Foreground="White" 
+                          FontWeight="Bold" 
+                          FontSize="14" 
+                          Margin="0,0,0,10"/>
+
+                <!-- Connection Settings -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Bağlantı Ayarları" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+
+                        <TextBlock Text="Port:" 
+                                  Foreground="White" 
+                                  Margin="0,5,0,2"/>
+                        <TextBox Style="{StaticResource InputBox}" 
+                                Text="COM3"/>
+
+                        <TextBlock Text="Baud Rate:" 
+                                  Foreground="White" 
+                                  Margin="0,10,0,2"/>
+                        <ComboBox Background="{StaticResource BackgroundLightBrush}" 
+                                 Foreground="White" 
+                                 BorderBrush="{StaticResource PrimaryBrush}">
+                            <ComboBoxItem Content="9600"/>
+                            <ComboBoxItem Content="57600" IsSelected="True"/>
+                            <ComboBoxItem Content="115200"/>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+
+                <!-- Map Settings -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Harita Ayarları" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+
+                        <CheckBox Content="Rota Çizgilerini Göster" 
+                                 Foreground="White" 
+                                 IsChecked="True" 
+                                 Margin="0,5"/>
+
+                        <CheckBox Content="Geçmiş Rotayı Göster" 
+                                 Foreground="White" 
+                                 IsChecked="True" 
+                                 Margin="0,5"/>
+
+                        <CheckBox Content="No-Fly Bölgelerini Göster" 
+                                 Foreground="White" 
+                                 IsChecked="False" 
+                                 Margin="0,5"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- System Settings -->
+                <Border Background="{StaticResource BackgroundDarkBrush}" 
+                       CornerRadius="5" 
+                       Padding="10" 
+                       Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Sistem Ayarları" 
+                                  Foreground="{StaticResource SecondaryBrush}" 
+                                  FontSize="12" 
+                                  Margin="0,0,0,5"/>
+
+                        <CheckBox Content="Otomatik Günlük Kaydet" 
+                                 Foreground="White" 
+                                 IsChecked="True" 
+                                 Margin="0,5"/>
+
+                        <CheckBox Content="Sesli Uyarılar" 
+                                 Foreground="White" 
+                                 IsChecked="True" 
+                                 Margin="0,5"/>
+
+                        <CheckBox Content="Karanlık Tema" 
+                                 Foreground="White" 
+                                 IsChecked="True" 
+                                 Margin="0,5"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Action Buttons -->
+                <Button Content="Ayarları Kaydet" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,10,0,5"/>
+
+                <Button Content="Varsayılana Dön" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+
+                <Button Content="Hakkında" 
+                       Style="{StaticResource SubmitButton}" 
+                       Margin="0,5"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

@@ -20,21 +20,32 @@ namespace YKI.UI.ViewModel
                 if (_selectedTab != value)
                 {
                     _selectedTab = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(SelectedTab));
+                    // Notify all visibility properties when tab changes  
+                    OnPropertyChanged(nameof(IsMissionTabSelected));
+                    OnPropertyChanged(nameof(IsTelemetryTabSelected));
+                    OnPropertyChanged(nameof(IsVideoTabSelected));
+                    OnPropertyChanged(nameof(IsSettingsTabSelected));
                 }
             }
         }
 
+        // Visibility properties for each tab  
+        public bool IsMissionTabSelected => SelectedTab == TabType.Mission;
+        public bool IsTelemetryTabSelected => SelectedTab == TabType.Telemetry;
+        public bool IsVideoTabSelected => SelectedTab == TabType.Video;
+        public bool IsSettingsTabSelected => SelectedTab == TabType.Settings;
+
         public SidebarViewModel()
         {
-            // Default
+            // Default  
             SelectedTab = TabType.Mission;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        // Method to update selected tab from external sources (like Taskbar)  
+        public void UpdateSelectedTab(TabType tabType)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            SelectedTab = tabType;
         }
     }
 }

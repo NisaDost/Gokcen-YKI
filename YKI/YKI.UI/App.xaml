@@ -5,6 +5,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <!-- Converters -->
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
         <!-- Color Palette -->
         <Color x:Key="BackgroundDarkColor">#FF000E24</Color>
         <Color x:Key="BackgroundLightColor">#FF152031</Color>
