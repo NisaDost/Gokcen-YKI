@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace YKI.UI.Components.Sidebar
+namespace YKI.UI.Components.SidebarContent
 {
     /// <summary>
-    /// Interaction logic for ToolboxContent.xaml
+    /// Interaction logic for MissionContent.xaml
     /// </summary>
-    public partial class ToolboxContent : UserControl
+    public partial class MissionContent : UserControl
     {
-        public ToolboxContent()
+        public MissionContent()
         {
             InitializeComponent();
         }

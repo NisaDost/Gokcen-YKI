@@ -14,16 +14,17 @@
 
         <!-- Tabs -->
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0">
+            <Button Content="Hava Aracı" Command="{Binding AircraftTabCommand}" Style="{StaticResource TabButtonStyle}" />
             <Button Content="Görev" Command="{Binding MissionTabCommand}" Style="{StaticResource TabButtonStyle}" />
-            <Button Content="Telemetri" Command="{Binding TelemetryTabCommand}" Style="{StaticResource TabButtonStyle}" />
             <Button Content="Video" Command="{Binding VideoTabCommand}" Style="{StaticResource TabButtonStyle}" />
-            <Button Content="Ayarlar" Command="{Binding SettingsTabCommand}" Style="{StaticResource TabButtonStyle}" />
+            <Button Content="Alarm" Command="{Binding AlarmTabCommand}" Style="{StaticResource TabButtonStyle}" />
+            <Button Content="Toolbox" Command="{Binding ToolboxTabCommand}" Style="{StaticResource TabButtonStyle}" />
         </StackPanel>
 
         <!-- Clock -->
         <TextBlock Grid.Column="1" 
                Text="{Binding CurrentTime}" 
-               Foreground="{StaticResource SecondaryBrush}" 
+               Foreground="White" 
                FontSize="16" 
                FontFamily="{StaticResource Inter}"
                HorizontalAlignment="Center" 

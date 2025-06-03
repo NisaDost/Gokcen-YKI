@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace YKI.UI.Components.Sidebar
+namespace YKI.UI.Components.SidebarContent
 {
     /// <summary>
     /// Interaction logic for VideoContent.xaml

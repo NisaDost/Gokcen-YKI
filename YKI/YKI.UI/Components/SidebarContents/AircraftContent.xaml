@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="YKI.UI.Components.SidebarContents.AircraftContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YKI.UI.Components.SidebarContents"
+             mc:Ignorable="d" 
+                          d:DesignHeight="450" d:DesignWidth="250"
+Background="{StaticResource BackgroundLightBrush}">
+    <Grid>
+        <!-- Battery -->
+        <Border Background="{StaticResource BackgroundDarkBrush}" 
+       CornerRadius="5" 
+       Padding="10" 
+       Margin="0,0,0,10">
+            <StackPanel>
+                <TextBlock Text="Batarya Durumu" 
+                  Foreground="{StaticResource SecondaryBrush}" 
+                  FontSize="12" 
+                  Margin="0,0,0,5"/>
+                <TextBlock Text="100%" 
+                  Foreground="White" 
+                  FontWeight="Bold"/>
+                <TextBlock Text="12.6V" 
+                  Foreground="White"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
