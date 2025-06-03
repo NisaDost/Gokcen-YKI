@@ -16,7 +16,7 @@ namespace YKI.UI.ViewModel
     {
         private TabType _selectedTab = TabType.Mission;
         private string _currentTime = DateTime.Now.ToString("HH:mm:ss");
-        private string _connectionStatusText = "Bağlantısız";
+        private string _connectionStatusText = "Bağlantı yok";
         private SolidColorBrush _connectionStatusBrush = new SolidColorBrush(Colors.Red);
 
         public TabType SelectedTab

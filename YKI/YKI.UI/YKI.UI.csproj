@@ -10,6 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\MapPage.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\MapPage.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Resources\Images\" />
     <Folder Include="Resources\Fonts\" />
     <Folder Include="Service\" />
