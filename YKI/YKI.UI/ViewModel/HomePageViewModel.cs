@@ -80,22 +80,23 @@ namespace YKI.UI.ViewModel
 
         private void UpdateMap()
         {
-            if (WebViewInstance?.CoreWebView2 != null)
+            if (WebViewInstance == null)
+                return;
+
+            WebViewInstance.NavigationCompleted += (s, e) =>
             {
-                // Convert strings to double safely
                 if (double.TryParse(Latitude, NumberStyles.Float, CultureInfo.InvariantCulture, out double lat) &&
                     double.TryParse(Longitude, NumberStyles.Float, CultureInfo.InvariantCulture, out double lng))
                 {
-                    // Ensure the numbers are formatted with '.' as a decimal separator
                     string latStr = lat.ToString(CultureInfo.InvariantCulture);
                     string lngStr = lng.ToString(CultureInfo.InvariantCulture);
 
-                    // Execute JavaScript to update the map
                     string script = $"map.setView([{latStr}, {lngStr}], 15);";
-                    WebViewInstance.CoreWebView2.ExecuteScriptAsync(script);
+                    WebViewInstance.ExecuteScriptAsync(script);
                 }
-            }
+            };
         }
+
 
         private void LogDeneme()
         {

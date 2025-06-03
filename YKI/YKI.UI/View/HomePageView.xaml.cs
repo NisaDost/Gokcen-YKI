@@ -43,6 +43,8 @@ namespace YKI.UI.View
                 {
                     Uri htmlUri = new Uri(htmlPath);
                     MapWebView.Source = htmlUri;
+                    // Set the WebView2 instance for ViewModel communication
+                    ViewModel.WebViewInstance = MapWebView;
                 }
                 else
                 {
